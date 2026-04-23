@@ -1,0 +1,25 @@
+.cause{
+    font-family: "Cause", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+  font-family: "Cause", cursive;
+}
+
+select {
+  font-family: "Cause", cursive;
+}
+
+select option {
+  font-family: "Cause", cursive;
+}
+
+.square {
+  height: 35px;
+  width: 35px;
+  background-color: black;
+  border-radius: 25%;
+}
