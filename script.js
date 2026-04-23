@@ -21,8 +21,13 @@ fetch('language.json')
 select.addEventListener('change', async function() {
     const container = document.getElementById('finder-container');
     const result_area = document.getElementById('info');
+    container.style.borderColor = 'transparent';
+    const metaRow = document.getElementById('meta-row');
+    if (metaRow) metaRow.innerHTML = '';
+    container.style.border = 'none';
+    container.style.cursor = 'default';
     result_area.innerHTML = 'Loading, please wait...';
-    container.style.backgroundColor = 'white';
+    container.style.backgroundColor = '#e9ecef';
     console.log(select.value);
 
     try{
@@ -39,20 +44,35 @@ select.addEventListener('change', async function() {
             const repo = res.data.items;
 
             console.log(repo);
-            console.log(langColors[select.value].color);
+            
+            container.onclick = () => {
+              window.open(repo[0].svn_url);
+            };
+            
             result_area.innerHTML = '';
             result_area.innerHTML = `
-                <p>${repo[0].name}</p>
-                <p>${repo[0].description}</p>
-                <p><span style="height: 9px; width: 9px; background-color: ${langColors[select.value].color}; border-radius: 50%; display: inline-block;"></span></p>
-                <p>${select.value}</p>
-                <i class="fa-solid fa-star"></i>
-                <p>${repo[0].stargazers_count}</p>
-                <i class="fa-solid fa-code-fork"></i>
-                <p>${repo[0].forks_count}</p>
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <p>${repo[0].open_issues_count}</p>
+              <div class="repo-card">
+                <h4 class="repo-name"><span style="font-weight: bold;">${repo[0].name}</span></h4>
+                <p class="repo-desc">${repo[0].description || 'No description'}</p>
+                <div class="repo-meta">
+                  <span class="lang">
+                    <span class="circle" style="background-color:${langColors[select.value]?.color || '#ccc'}"></span>
+                    ${select.value}
+                  </span>
+                  <span><i class="fa-solid fa-star"></i> ${repo[0].stargazers_count}</span>
+                  <span><i class="fa-solid fa-code-fork"></i> ${repo[0].forks_count}</span>
+                  <span><i class="fa-solid fa-circle-exclamation"></i> ${repo[0].open_issues_count}</span>
+                </div>
+              </div>
             `;
+
+            // set finder container background to white as a bg for the result
+            container.style.backgroundColor = 'white';
+            container.style.border = '2px solid black';
+            container.style.borderRadius = '12px';
+            container.style.paddingTop = '16px';
+            container.style.paddingBottom = '16px';
+            container.style.cursor = 'pointer';
         }
     }
     
