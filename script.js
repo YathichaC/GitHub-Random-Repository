@@ -48,7 +48,7 @@ select.addEventListener('change', async function() {
             container.onclick = () => {
               window.open(repo[0].svn_url);
             };
-            
+
             result_area.innerHTML = '';
             result_area.innerHTML = `
               <div class="repo-card">
@@ -66,7 +66,6 @@ select.addEventListener('change', async function() {
               </div>
             `;
 
-            // set finder container background to white as a bg for the result
             container.style.backgroundColor = 'white';
             container.style.border = '2px solid black';
             container.style.borderRadius = '12px';
@@ -79,6 +78,6 @@ select.addEventListener('change', async function() {
     catch (err) {
         console.error(err);
         result_area.innerHTML = 'Error fetching repository';
-        container.style.backgroundColor = '#ffc9c9'; // error
+        container.style.backgroundColor = '#ffc9c9';
   }
 })

@@ -89,17 +89,15 @@ select {
   box-sizing: border-box;
   display: block;
   margin: 8px auto;
-  /* hide native arrow */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: white;
-  /* custom left-positioned arrow (SVG) */
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M6 8l4 4 4-4' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat;
   background-position: 16px center;
   background-size: 12px 12px;
-  padding-left: 44px; /* leave space for arrow */
+  padding-left: 44px;
 }
 
 #meta-row {
